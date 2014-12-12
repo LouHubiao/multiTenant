@@ -1,0 +1,209 @@
+﻿/*basic reset*/
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+body {
+	padding-top: 100px;
+	background: hsl(120, 40%, 40%);
+	font-family: Sniglet;
+}
+
+.logMain {
+	width: 500px; margin: 0 auto; padding-bottom: 10px;
+	background: white; border-radius: 3px; overflow: hidden;
+}
+
+.regMain {
+    width: 500px; margin: 0 auto; padding-bottom: 10px;
+	background: white; border-radius: 3px; overflow: hidden;
+}
+
+.logMain h1 {
+	font-size: 24px; font-weight: normal;
+	background: hsl(120, 40%, 95%); color: hsl(120, 40%, 40%);
+	text-align: center; 
+	padding: 20px 0; margin-bottom: 40px;
+}
+
+.regMain h1 {
+    font-size: 24px; font-weight: normal;
+	background:hsl(120, 29%, 35%);
+	text-align: center; 
+	padding: 20px 0; margin-bottom: 40px;
+}
+
+.flp {padding: 0 50px;}
+/*Let's place the label over the input*/
+.flp div {position: relative; margin-bottom: 30px;}
+
+.flp input, .flp label {
+	width: 400px; display: block;
+	font: inherit; font-size: 16px; line-height: 24px;
+	/*fixed height for FF line height issue. 
+	height = 24(lineheight) + 10*2(padding) + 2(border)*/
+	height: 46px;
+	border: 1px solid #999;
+}
+.flp input {padding: 10px; outline: none; border-radius: 3px;}
+.flp label {
+	position: absolute; left: 0; top: 0;
+	/*left/right padding will be 2px less, adjusted by padding on .ch*/
+	padding: 10px 8px;
+	border-color: transparent; color: #666;
+	cursor: text;
+}
+
+/*label styles*/
+.ch {
+	display: block; float: left;
+	position: relative; /*for upward animation*/
+	background: white; 
+}
+.ch:first-child {padding-left: 2px;}
+.ch:last-child {padding-right: 2px;}
+
+/*active input label*/
+.focussed {
+	/*when any input is already focussed clicking on it(label) again won't do anything*/
+	pointer-events: none;
+}
+
+.flp .btn {
+    display: block;
+    float: left;
+    position: relative;
+    height: 46px;
+    width: 45%;
+    margin: 0 15px 18px 5px;
+
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+ 
+.flp .btn:before,
+.flp .btn:after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    height: 46px;
+    width: 45%;
+    bottom: -1px;
+
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+ 
+.flp .btn:before { 
+    height: 42px;
+    bottom: -4px;
+    border-top: 0;
+
+    -webkit-border-radius: 0 0 3px 3px; 
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+     
+    -webkit-box-shadow: 0 1px 1px 0px #bfbfbf;
+    -moz-box-shadow: 0 1px 1px 0px #bfbfbf;
+    box-shadow: 0 1px 1px 0px #bfbfbf;
+}
+
+.flp .btn:active {
+    border: none;
+    bottom: -4px;
+    margin-bottom: 22px;
+     
+    -webkit-box-shadow: 0 1px 1px #fff;
+    -moz-box-shadow:  0 1px 1px #fff;
+    box-shadow:  1px 1px 0 #fff, inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+ 
+.flp .btn:active:before,
+.flp .btn:active:after {
+    border: none;   
+     
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.gray,
+.gray:hover,
+.gray:visited {
+    color: #3d8f3d;
+    border-bottom: 4px solid #b2b1b1;
+    
+    text-shadow: 0px 1px 0px #fafafa;
+     
+    background: #eef8ee;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#e2e2e2));
+    background: -moz-linear-gradient(top,  #eee,  #e2e2e2);
+     
+    box-shadow: inset 1px 1px 0 hsl(120, 7%, 88%);
+}
+ 
+.gray:before,
+.gray:after {
+    border: 1px solid #cbcbcb;
+    border-bottom: 1px solid #a5a5a5;
+}
+ 
+.gray:hover {
+    background: #e2e2e2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#eee));
+    background: -moz-linear-gradient(top,  #e2e2e2,  #eee);
+}
+
+.flp .regular-radio {
+	display: none;
+}
+
+.flp .regular-radio + label {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+    width:12px;
+    height:12px;
+}
+
+.flp .regular-radio:checked + label:after {
+	content: ' ';
+	width: 12px;
+	height: 12px;
+	border-radius: 50px;
+	position: absolute;
+	top: 3px;
+	background: #99a1a7;
+	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+	text-shadow: 0px;
+	left: 3px;
+	font-size: 32px;
+}
+
+.flp .regular-radio:checked + label {
+	background-color: #e9ecee;
+	color: #99a1a7;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.flp .regular-radio + label:active, .regula
+.regular-radio + label:active, .regular-radio:checked + label:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.flp .regSpan {
+    margin:0 40px 0 0px;
+    font: inherit; font-size: 16px; line-height: 24px;
+	/*fixed height for FF line height issue. 
+	height = 24(lineheight) + 10*2(padding) + 2(border)*/
+	height: 46px;
+	border: 1px solid #999;
+    border-color: transparent; color: #666;
+	cursor: text;
+}

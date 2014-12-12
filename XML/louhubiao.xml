@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extraData>
+  <row>
+    <Id>1</Id>
+    <nation>汉族</nation>
+    <party>共青团员</party>
+  </row>
+  <row>
+    <Id>3</Id>
+    <nation>汉族</nation>
+    <party>中共党员</party>
+  </row>
+  <row>
+    <Id>5</Id>
+    <nation>汉族</nation>
+    <party>中共预备党员</party>
+  </row>
+  <row>
+    <Id>6</Id>
+    <nation>汉族</nation>
+    <party>中共预备党员</party>
+  </row>
+  <row>
+    <Id>7</Id>
+    <nation>汉族</nation>
+    <party>中共党员</party>
+  </row>
+  <row>
+    <Id>8</Id>
+    <nation>汉族</nation>
+    <party>中共党员</party>
+  </row>
+  <row>
+    <Id>1025</Id>
+    <nation>汉族</nation>
+    <party>中共党员</party>
+  </row>
+</extraData>

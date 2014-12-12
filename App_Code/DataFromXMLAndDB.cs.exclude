@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using sqlHelper;
+
+/// <summary>
+/// DataFromXMLAndDB 的摘要说明
+/// </summary>
+namespace DataFrom
+{
+    public class DataFromXMLAndDB
+    {
+        public static int GetUserId(string username)
+        {
+            int userId = 0;
+            string sqlStr = "SELECT Id FROM dbo.users WHERE Name=@username";
+            SqlParameter[] param = {
+                                   new SqlParameter("@username",username)};
+            SqlDataReader userIdReader = SQLHelper.ExecuteReader(sqlStr, param);
+            if (userIdReader.Read())
+            {
+                string theUserId = userIdReader["Id"].ToString();
+                int.TryParse(theUserId, out userId);
+            }
+            return userId;
+        }
+
+        public static string GetXMLPath(string username)
+        {
+            string xmlPath = ConfigurationManager.AppSettings["XMLsFile"] + @"\" + username + ".xml";
+            return xmlPath;
+        }
+
+        public static List<string> GetHeadFromDB(string DBName)
+        {
+            List<string> heads = new List<string>();
+            string sqlStr = "SELECT name FROM syscolumns where id=object_id(N'" + DBName + "')";
+            DataTable headTable = SQLHelper.ExecuteDt(sqlStr);
+            foreach (DataRow aRow in headTable.Rows)
+            {
+                heads.Add(aRow["name"].ToString());
+            }
+            if (heads.Count == 0)
+                System.Diagnostics.Debug.Write("GetHeadFromDB:heads.Count == 0");
+            return heads;
+        }
+        public static List<string> GetHeadFromXML(string xmlPath)
+        {
+            List<string> heads = new List<string>();
+            DataSet xmlSet = new DataSet();
+            xmlSet.ReadXml(xmlPath);
+            DataTable XMLTable = xmlSet.Tables[0];
+            foreach (DataColumn col in XMLTable.Columns)
+            {
+                heads.Add(col.ColumnName);
+            }
+            return heads;
+        }
+        public static DataTable GetDataFromDB(int userId)
+        {
+            string sqlStr = "SELECT * FROM dbo.XMLTest WHERE UserID=" + userId.ToString();
+            DataTable DBTable = SQLHelper.ExecuteDt(sqlStr);
+            return DBTable;
+        }
+        public static DataTable GetDataFromXML(string xmlPath)
+        {
+            DataSet xmlSet = new DataSet();
+            xmlSet.ReadXml(xmlPath);
+            DataTable XMLTable = xmlSet.Tables[0];  //只有一个table
+            return XMLTable;
+        }
+    }
+}

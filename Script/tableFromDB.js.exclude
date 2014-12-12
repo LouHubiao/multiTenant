@@ -1,0 +1,13 @@
+﻿
+    function CreateTable(rowCount, cellCount) {
+        var table = $("<table>");
+        for (var i = 0; i < rowCount; i++) {
+            var tr = $("<tr></tr>");
+            tr.appendTo(table);
+            for (var j = 0; j < cellCount; j++) {
+                var td = $("<td>" + i * j + "</td>");
+                td.appendTo(tr);
+            }
+        }
+        table.appendTo($("#MainTable"));
+    }
